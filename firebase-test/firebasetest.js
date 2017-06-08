@@ -13,8 +13,8 @@ firebase.initializeApp(config);
 // Create a JavaScript object for the HTML element that has id="message"
 var messageBox = document.getElementById("message");
 
-// Get a reference to the row of our database called "greeting"
-var dbRef = firebase.database().ref().child("greeting");
+// Get a reference to the row of our database called "myname"
+var dbRef = firebase.database().ref().child("myname");
 
 // Whenever our database reference is updated, show the data on our web page!
 dbRef.on("value", function(dataSnapshot) {
