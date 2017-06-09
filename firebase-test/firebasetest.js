@@ -20,10 +20,10 @@ var usernameBox = document.getElementById("username");
 var dbRef = firebase.database().ref();
 
 //Get a reference to the "greeting section"
-var dbGreeting=dbRef.child("greeting");
+var dbGreeting = dbRef.child("greeting");
 
 //Get a reference to the "myname section"
-var dbUsername=dbRef.child("myname");
+var dbUsername = dbRef.child("myname");
 
 // Whenever our database reference is updated, show the data on our web page!
 dbRef.on("value", function(dataSnapshot) {
