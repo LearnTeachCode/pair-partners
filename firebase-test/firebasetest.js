@@ -25,7 +25,14 @@ var dbGreeting = dbRef.child("greeting");
 //Get a reference to the "myname section"
 var dbUsername = dbRef.child("myname");
 
+//greeting value updated
+dbGreeting.on("value", function(dataSnapshot){
+    messageBox.textContent = dataSnapshot.val();
+    console.log(dataSnapshot.val());
+});
+
 // Whenever our database reference is updated, show the data on our web page!
-dbRef.on("value", function(dataSnapshot) {
-	messageBox.textContent = dataSnapshot.val();
+dbUsername.on("value", function(dataSnapshot) {
+	usernameBox.textContent = dataSnapshot.val();
+	console.log(dataSnapshot.val());
 });
