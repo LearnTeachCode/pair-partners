@@ -23,12 +23,23 @@ var messageBox = document.getElementById("message");
 var dbRef = firebase.database().ref();
 
 // Get a reference to the "greeting" section of our database
+// var dbGreeting = dbRef.child("greeting");
 var dbGreeting = dbRef.child("greeting");
 // Get a reference to the "myname" section of our database
 var dbUsername = dbRef.child("myname");
 
 // Whenever our database reference is updated, show the data on our web page!
-dbRef.on("value", function(dataSnapshot) {
+// Where is the event happening? On the dbRef object, which now points to the root of our Firebase database!
+// Which event are we listening for? The "value" event, which is triggered any time a value changes inside this database location.
+// What should happen when the event occurs? Run an anonymous function that will display the value of the new data inside the messageBox element on our web page.
+
+// textContent = text in the paragraph
+dbGreeting.on("value", function(dataSnapshot) {
 	messageBox.textContent = dataSnapshot.val();
+  console.log( dataSnapshot.val() );
 });
 
+dbUsername.on("value", function(dataSnapshot) {
+  usernameBox.textContent = dataSnapshot.val();
+  console.log( dataSnapshot.val() );
+});
