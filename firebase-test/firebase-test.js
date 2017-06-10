@@ -1,3 +1,11 @@
+var messageBox = document.getElementById("message");
+
+var dbRef = firebase.database().ref().child("greeting");
+
+
+dbRef.on("value", function(dataSnapshot) { messageBox.textContent = dataSnapshot.val(); });
+
+
 <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 <script>
   // Initialize Firebase
