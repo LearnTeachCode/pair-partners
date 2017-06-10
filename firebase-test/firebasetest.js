@@ -12,7 +12,7 @@
 
  var messageBox = document.getElementById("message");
 
- var dbRef = firebase.database().ref().child("greeting");
+ var dbRef = firebase.database().ref().child("myname");
 
  dbRef.on("value", function(dataSnapshot) {
 	messageBox.textContent = dataSnapshot.val();
