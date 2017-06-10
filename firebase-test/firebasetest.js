@@ -7,4 +7,13 @@
    storageBucket: "fir-test-cd2a4.appspot.com",
    messagingSenderId: "382326280146"
  };
+
  firebase.initializeApp(config);
+
+ var messageBox = document.getElementById("message");
+
+ var dbRef = firebase.database().ref().child("greeting");
+
+ dbRef.on("value", function(dataSnapshot) {
+	messageBox.textContent = dataSnapshot.val();
+});
