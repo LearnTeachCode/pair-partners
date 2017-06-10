@@ -11,8 +11,11 @@
  firebase.initializeApp(config);
 
  var messageBox = document.getElementById("message");
+ var usernameBox = document.getElementById("username");
 
- var dbRef = firebase.database().ref().child("myname");
+ var dbRef = firebase.database().ref();
+ var dbGreeting = dbRef.child("greeting");
+ var dbUsername = dbRef.child("myname");
 
  dbRef.on("value", function(dataSnapshot) {
 	messageBox.textContent = dataSnapshot.val();
