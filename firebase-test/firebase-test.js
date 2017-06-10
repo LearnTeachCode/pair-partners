@@ -1,13 +1,4 @@
-var messageBox = document.getElementById("message");
 
-var dbRef = firebase.database().ref().child("greeting");
-
-
-dbRef.on("value", function(dataSnapshot) { messageBox.textContent = dataSnapshot.val(); });
-
-
-<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCnuHGT34ttHnWVpggi_ZelpUgjWYnFlEU",
@@ -17,5 +8,14 @@ dbRef.on("value", function(dataSnapshot) { messageBox.textContent = dataSnapshot
     storageBucket: "cool-things-666fa.appspot.com",
     messagingSenderId: "1038438303212"
   };
-  firebase.initializeApp(config);
-</script>
+
+firebase.initializeApp(config);
+
+
+var messageBox = document.getElementById("message");
+
+var dbRef = firebase.database().ref().child("greeting");
+
+dbRef.on("value", function(dataSnapshot) {
+  messageBox.textContent = dataSnapshot.val();
+});
