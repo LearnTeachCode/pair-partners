@@ -12,10 +12,18 @@
 firebase.initializeApp(config);
 
 
-var messageBox = document.getElementById("message");
+var userNamebox = document.getElementById("username");
+var messageBox =document.getElementById("message")
 
-var dbRef = firebase.database().ref().child("greeting");
+var dbRef = firebase.database().ref();
+var dbGreeting = dbRef.child("greeting");
+var dbUsername = dbRef.child("myname");
 
-dbRef.on("value", function(dataSnapshot) {
+dbGreeting.on("value", function(dataSnapshot) {
   messageBox.textContent = dataSnapshot.val();
+  console.log(dataSnapshot.val() );
+});
+dbUsername.on("value", function(dataSnapshot) {
+  userNamebox.textContent = dataSnapshot.val();
+  console.log(dataSnapshot.val() );
 });
