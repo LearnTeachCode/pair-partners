@@ -11,12 +11,21 @@
   };
   firebase.initializeApp(config);
   
+  // Create a JavaScript object for the HTML element that has id="message"
+var usernameBox = document.getElementById("username");
 
 // Create a JavaScript object for the HTML element that has id="message"
 var messageBox = document.getElementById("message");
 
 // Get a reference to the row of our database called "greeting"
-var dbRef = firebase.database().ref().child("myname");
+// var dbRef = firebase.database().ref().child("myname");
+
+var dbRef = firebase.database().ref();
+
+// Get a reference to the "greeting" section of our database
+var dbGreeting = dbRef.child("greeting");
+// Get a reference to the "myname" section of our database
+var dbUsername = dbRef.child("myname");
 
 // Whenever our database reference is updated, show the data on our web page!
 dbRef.on("value", function(dataSnapshot) {
