@@ -17,6 +17,14 @@
  var dbGreeting = dbRef.child("greeting");
  var dbUsername = dbRef.child("myname");
 
- dbRef.on("value", function(dataSnapshot) {
+ dbGreeting.on("value", function(dataSnapshot) {
 	messageBox.textContent = dataSnapshot.val();
+    console.log( dataSnapshot.val());
+
+});
+
+dbUsername.on("value", function(dataSnapshot) {
+  usernameBox.textContent = dataSnapshot.val();
+  console.log( dataSnapshot.val());
+
 });
