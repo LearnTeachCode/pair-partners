@@ -17,14 +17,18 @@ var usernameBox = document.getElementById("username");
 
 // Get a reference to the row of our database called "greeting"
 var dbRef = firebase.database().ref();
-
 // Get a reference to the "greeting" section of our database
 var dbGreeting = dbRef.child("greeting");
-
 // Get a reference to the "myname" section of our database
 var dbUsername = dbRef.child("myname");
 
 // Whenever our database reference is updated, show the data on our web page!
-dbRef.on("value", function(dataSnapshot) { 
+dbGreeting.on("value", function(dataSnapshot) { 
   messageBox.textContent = dataSnapshot.val(); 
+  console.log( dataSnapshot.val() );
+});
+
+dbUsername.on("value", function(dataSnapshot) { 
+  usernameBox.textContent = dataSnapshot.val(); 
+  console.log( dataSnapshot.val() );
 });
