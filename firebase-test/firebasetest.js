@@ -10,6 +10,8 @@ var config = {
 
 firebase.initializeApp(config);
 
+var provider = new firebase.auth.GithubAuthProvider();
+
 // Create a JavaScript object for the HTML element that has id="message"
 var messageBox = document.getElementById("message");
 // Create a JavaScript object for the HTML element that has id="username"
@@ -48,11 +50,16 @@ dbUsername.on("value", function(dataSnapshot) {
 });
 
 // Event Listener for Login
-loginButton.addEventListener("click", function(){
-	console.log("User clicked LOGIN");
+// Use Firebase with Github Auth to log in the user
+firebase.auth().signInWithRedirect(provider).catch(function(error){
+	// Log any errors to the console
+	console.log(error);
 });
 
+
 // Event Listener for Logout
-logoutButton.addEventListener("click", function(){
-	console.log("User clicked LOGOUT");	
+// Change your logout button's event listener 
+firebase.auth().signOut().catch(function(error){
+	// Log any errors to the console
+	console.log(error);
 });
