@@ -75,12 +75,18 @@ firebase.auth().onAuthStateChanged(function(user){
 		//Otherwise, if no user currently logged in:
 		var username = document.getElementById("username");
 		var profilephoto = document.getElementById("profilephoto");
+		
+		// Display Username and Photo
+		var show = document.getElementById("userinfo").innerHTML;
+		var show1 = document.getElementById("profilephoto").innerHTML;
 	}
 	else
 	{
 		console.log("User successfully logged OUT from Firebase!");
 		
 		// Here: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
+		document.getElementById("userinfo").textContent = "Not currently logged in";
+		
 	}
 	
 });
