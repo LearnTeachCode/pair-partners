@@ -73,8 +73,8 @@ firebase.auth().onAuthStateChanged(function(user){
 		
 		//Here: update the paragraph with ID of "userinfo to display Github's Username and Github profile photo "
 		//Otherwise, if no user currently logged in:
-		var username = getElementById("username");
-		var profilephoto = getElementById("profilephoto");
+		var username = document.getElementById("username");
+		var profilephoto = document.getElementById("profilephoto");
 	}
 	else
 	{
