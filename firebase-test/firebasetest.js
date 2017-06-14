@@ -63,3 +63,22 @@ firebase.auth().signOut().catch(function(error){
 	// Log any errors to the console
 	console.log(error);
 });
+
+// onAuthStateChanged
+//When user logs in or logs out:
+firebase.auth().onAuthStateChanged(function(user){
+	// If user is now logged in:
+	if (user){
+		console.log("User successfully logged in to Firebase!");
+		
+		//Here: update the paragraph with ID of "userinfo to display Github's Username and Github profile photo "
+		//Otherwise, if no user currently logged in:
+	}
+	else
+	{
+		console.log("User successfully logged OUT from Firebase!");
+		
+		// Here: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
+	}
+	
+});
