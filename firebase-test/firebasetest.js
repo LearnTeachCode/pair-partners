@@ -32,3 +32,7 @@ dbUsername.on("value", function(dataSnapshot) {
   usernameBox.textContent = dataSnapshot.val(); 
   console.log( dataSnapshot.val() );
 });
+
+  console.log("User clicked LOGIN");
+
+  console.log("User clicked LOGOUT");
