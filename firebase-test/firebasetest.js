@@ -1,45 +1,93 @@
-// JavaScript Document
-
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAAKWAWX9IYQjC1q7hjZL5nsTqWfEulU9I",
-    authDomain: "fir-test-5f0d3.firebaseapp.com",
-    databaseURL: "https://fir-test-5f0d3.firebaseio.com",
-    projectId: "fir-test-5f0d3",
-    storageBucket: "fir-test-5f0d3.appspot.com",
-    messagingSenderId: "852596610591"
-  };
-  firebase.initializeApp(config);
-  
-  // Create a JavaScript object for the HTML element that has id="message"
-var usernameBox = document.getElementById("username");
+var config = {
+  apiKey: "AIzaSyCdoBkKYmhVlgvy46sBKLLknJUszf-TYAc",
+  authDomain: "test-web-app-4fde9.firebaseapp.com",
+  databaseURL: "https://test-web-app-4fde9.firebaseio.com",
+  projectId: "test-web-app-4fde9",
+  storageBucket: "test-web-app-4fde9.appspot.com",
+  messagingSenderId: "406177608219"
+};
+
+firebase.initializeApp(config);
+
+var provider = new firebase.auth.GithubAuthProvider();
 
 // Create a JavaScript object for the HTML element that has id="message"
 var messageBox = document.getElementById("message");
+// Create a JavaScript object for the HTML element that has id="username"
+var usernameBox = document.getElementById("username");
 
-// Get a reference to the row of our database called "greeting"
-// var dbRef = firebase.database().ref().child("myname");
+var userInfoBox = document.getElementById("userinfo");
+var loginButton = document.getElementById("login");
+var logoutButton = document.getElementById("logout");
 
+// Get a reference to the root of our database
 var dbRef = firebase.database().ref();
-
 // Get a reference to the "greeting" section of our database
-// var dbGreeting = dbRef.child("greeting");
 var dbGreeting = dbRef.child("greeting");
 // Get a reference to the "myname" section of our database
 var dbUsername = dbRef.child("myname");
 
-// Whenever our database reference is updated, show the data on our web page!
-// Where is the event happening? On the dbRef object, which now points to the root of our Firebase database!
-// Which event are we listening for? The "value" event, which is triggered any time a value changes inside this database location.
-// What should happen when the event occurs? Run an anonymous function that will display the value of the new data inside the messageBox element on our web page.
-
-// textContent = text in the paragraph
+// Whenever "greeting" value in our database is updated, show the data inside messageBox!
 dbGreeting.on("value", function(dataSnapshot) {
-	messageBox.textContent = dataSnapshot.val();
+  messageBox.textContent = dataSnapshot.val();
   console.log( dataSnapshot.val() );
 });
 
+// Whenever "myname" value in our database is updated, show the data inside usernameBox!
 dbUsername.on("value", function(dataSnapshot) {
   usernameBox.textContent = dataSnapshot.val();
   console.log( dataSnapshot.val() );
 });
+
+
+// challenge 5
+//When user clicks login button:
+loginButton.addEventListener("click", function(){
+ console.log("User clicked LOGIN");
+});
+
+// Use Firebase with GitHub Auth to log in the user
+firebase.auth().signInWithPopup(provider).catch(function(error) {
+  // Log any errors to the console
+  console.log(error);
+});
+
+// When user clicks logout button:
+logoutButton.addEventListener("click", function(){
+  console.log("User clicked LOGOUT");
+});
+
+// Use Firebase with GitHub Auth to log in the user
+firebase.auth().signOut().catch(function(error) {
+  // Log any errors to the console
+  console.log(error);
+});
+// challenge 5
+
+
+
+// When user logs in or logs out:
+firebase.auth().onAuthStateChanged(function(user){
+  // If user is now logged in:
+  if (user) {
+
+    console.log('User successfully logged in to Firebase!');
+
+    // HERE: Update the paragraph with ID of "userinfo" to display user's GitHub username and GitHub profile photo!
+
+  // Otherwise, if no user currently logged in:
+  } else {
+
+    console.log('User successfully logged OUT from Firebase!');
+
+    // HERE: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
+
+  }
+});
+
+//displayName
+//Inherited from firebase.UserInfo#displayName
+
+//photoURL
+// Inherited from firebase.UserInfo#photoURL
