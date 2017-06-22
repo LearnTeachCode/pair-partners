@@ -27,26 +27,26 @@ var dbUsername = dbRef.child("myname");
 
 // Whenever "greeting" value in our database reference is updated, show the data on our web page!
 dbGreeting.on("value", function(dataSnapshot) { 
-  messageBox.textContent = dataSnapshot.val(); 
-  console.log( dataSnapshot.val() );
+      messageBox.textContent = dataSnapshot.val(); 
+      console.log( dataSnapshot.val() );
 });
 
 
 // Whenever "myname" value in our database is updated, show the data inside usernameBox!
 dbUsername.on("value", function(dataSnapshot) { 
-  usernameBox.textContent = dataSnapshot.val(); 
-  console.log( dataSnapshot.val() );
+      usernameBox.textContent = dataSnapshot.val(); 
+      console.log( dataSnapshot.val() );
 });
 
 
 // When user clicks login button:
 loginButton.addEventListener("click", function() {
-  console.log("User clicked LOGIN");
+      console.log("User clicked LOGIN");
 });
 
 // When user clicks logout button:
 logoutButton.addEventListener("click", function() {
-  console.log("User clicked LOGOUT");
+      console.log("User clicked LOGOUT");
 });
 
-
+  
