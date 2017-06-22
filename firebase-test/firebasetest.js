@@ -10,45 +10,43 @@
   
   firebase.initializeApp(config);
 
-// Create a JavaScript object for the HTML element that has id="message"
+// Create a JavaScript object for each HTML element that we need to use"
 var messageBox = document.getElementById("message");
-// Create a JavaScript object for the HTML element that has id="username"
 var usernameBox = document.getElementById("username");
 
-// Get a reference to the row of our database called "greeting"
+var userInfoBox = document.getElementById("userinfo");
+var loginButton = document.getElementById("loginbtn");
+var logoutButton = document.getElementById("logoutbtn");
+
+// Get a reference to the root of our database called "greeting"
 var dbRef = firebase.database().ref();
 // Get a reference to the "greeting" section of our database
 var dbGreeting = dbRef.child("greeting");
 // Get a reference to the "myname" section of our database
 var dbUsername = dbRef.child("myname");
 
-// Whenever our database reference is updated, show the data on our web page!
+// Whenever "greeting" value in our database reference is updated, show the data on our web page!
 dbGreeting.on("value", function(dataSnapshot) { 
   messageBox.textContent = dataSnapshot.val(); 
   console.log( dataSnapshot.val() );
 });
 
+
+// Whenever "myname" value in our database is updated, show the data inside usernameBox!
 dbUsername.on("value", function(dataSnapshot) { 
   usernameBox.textContent = dataSnapshot.val(); 
   console.log( dataSnapshot.val() );
 });
 
-//create objects for your new paragraph and buttons.
-var loginButton = document.getElementById("loginbtn");
-var logoutButton = document.getElementById("logoutbtn");
 
-loginButton.addEventListener("click", function (event) {
+// When user clicks login button:
+loginButton.addEventListener("click", function() {
   console.log("User clicked LOGIN");
 });
 
-logoutButton.addEventListener("click", function (event) {
+// When user clicks logout button:
+logoutButton.addEventListener("click", function() {
   console.log("User clicked LOGOUT");
 });
 
-// loginButton.onclick = function 
 
-// window.addEventListener("click", logMouseEvent);
-
-// function logMouseEvent (event) {
-//   console.log(event);
-// }
