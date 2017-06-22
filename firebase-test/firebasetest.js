@@ -37,6 +37,18 @@ dbUsername.on("value", function(dataSnapshot) {
 var loginButton = document.getElementById("loginbtn");
 var logoutButton = document.getElementById("logoutbtn");
 
-  // console.log("User clicked LOGIN");
+loginButton.addEventListener("click", function (event) {
+  console.log("User clicked LOGIN");
+});
 
-  // console.log("User clicked LOGOUT");
+logoutButton.addEventListener("click", function (event) {
+  console.log("User clicked LOGOUT");
+});
+
+// loginButton.onclick = function 
+
+// window.addEventListener("click", logMouseEvent);
+
+// function logMouseEvent (event) {
+//   console.log(event);
+// }
