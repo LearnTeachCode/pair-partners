@@ -33,6 +33,10 @@ dbUsername.on("value", function(dataSnapshot) {
   console.log( dataSnapshot.val() );
 });
 
-  console.log("User clicked LOGIN");
+//create objects for your new paragraph and buttons.
+var loginButton = document.getElementById("loginbtn");
+var logoutButton = document.getElementById("logoutbtn");
 
-  console.log("User clicked LOGOUT");
+  // console.log("User clicked LOGIN");
+
+  // console.log("User clicked LOGOUT");
