@@ -68,12 +68,14 @@ firebase.auth().onAuthStateChanged(function(user){
 
     // HERE: Update the paragraph with ID of "userinfo" to display user's GitHub username and GitHub profile photo!
 
+
   // Otherwise, if no user currently logged in:
   } else {
 
     console.log('User successfully logged OUT from Firebase!');
 
     // HERE: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
+
 
   }
 });
