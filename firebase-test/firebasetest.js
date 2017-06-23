@@ -10,6 +10,9 @@
   
   firebase.initializeApp(config);
 
+//create an instance of Firebase's GitHub provider object:
+var provider = new firebase.auth.GithubAuthProvider();
+
 // Create a JavaScript object for each HTML element that we need to use"
 var messageBox = document.getElementById("message");
 var usernameBox = document.getElementById("username");
@@ -41,12 +44,22 @@ dbUsername.on("value", function(dataSnapshot) {
 
 // When user clicks login button:
 loginButton.addEventListener("click", function() {
-      console.log("User clicked LOGIN");
+// Use Firebase with GitHub Auth to log in the user
+firebase.auth().signInWithRedirect(provider).catch(function(error) {
+  // Log any errors to the console
+  console.log(error);
 });
+
 
 // When user clicks logout button:
 logoutButton.addEventListener("click", function() {
-      console.log("User clicked LOGOUT");
+// Use Firebase with GitHub Auth to log in the user
+firebase.auth().signOut().catch(function(error) {
+  // Log any errors to the console
+  console.log(error);
 });
+
+
+
 
   
