@@ -43,7 +43,7 @@ dbUsername.on("value", function(dataSnapshot) {
 
 
 // When user clicks login button:
-loginButton.addEventListener("click", function() {
+loginButton.addEventListener("click", function()  {
 // Use Firebase with GitHub Auth to log in the user
 firebase.auth().signInWithRedirect(provider).catch(function(error) {
   // Log any errors to the console
@@ -59,7 +59,23 @@ firebase.auth().signOut().catch(function(error) {
   console.log(error);
 });
 
+// When user logs in or logs out:
+firebase.auth().onAuthStateChanged(function(user){
+  // If user is now logged in:
+  if (user) {
 
+    console.log('User successfully logged in to Firebase!');
 
+    // HERE: Update the paragraph with ID of "userinfo" to display user's GitHub username and GitHub profile photo!
+
+  // Otherwise, if no user currently logged in:
+  } else {
+
+    console.log('User successfully logged OUT from Firebase!');
+
+    // HERE: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
+
+  }
+});
 
   
