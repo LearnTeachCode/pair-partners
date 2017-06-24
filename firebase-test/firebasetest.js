@@ -86,10 +86,11 @@ firebase.auth().onAuthStateChanged(function(user){
         myStr += photoProfile ;
         myStr += '" alt="GitHubProfilePic" style="width:150px;height:150px;">';
 
+
     document.getElementById("userinfo").innerHTML = myStr; //'Hello, <strong> '+ username + '</strong> Welcome! <img src="' + photoProfile + '" alt="GitHubProfilePic" style="width:200px;height:200px;">';
   // Otherwise, if no user currently logged in:
   } else {
-  //   document.getElementById("userinfo").innerHTML = 'Goodbye, <strong> '+ username + '</strong> Have a nice day !': <img src="#">;
+     document.getElementById("userinfo").textContent = 'Goodbye, have a nice day !';
     console.log('User successfully logged OUT from Firebase!');
 
     // HERE: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
