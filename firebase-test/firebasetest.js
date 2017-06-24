@@ -7,14 +7,14 @@
     storageBucket: "fir-test-4f28e.appspot.com",
     messagingSenderId: "276366659662"
   };
-  
+
   firebase.initializeApp(config);
 var provider = new firebase.auth.GithubAuthProvider();
 
 // Create a JavaScript object for each HTML element that we need to use:
 var messageBox = document.getElementById("message");
 var usernameBox = document.getElementById("username");
-
+ debugger; 
 var userInfoBox = document.getElementById("userinfo");
 var loginButton = document.getElementById("login");
 var logoutButton = document.getElementById("logout");
@@ -46,7 +46,7 @@ firebase.auth().signInWithRedirect(provider).catch(function(error) {
   // Log any errors to the console
   console.log(error);
   
-});
+  });
 
 
 // When user clicks logout button:
@@ -58,3 +58,23 @@ logoutButton.addEventListener("click", function(){
   
 });
   
+// When user logs in or logs out:
+firebase.auth().onAuthStateChanged(function(user){
+  // If user is now logged in:
+  if (user) {
+
+    console.log('User successfully logged in to Firebase!');
+
+    // HERE: Update the paragraph with ID of "userinfo" to display user's GitHub username and GitHub profile photo!
+var username;
+
+  // Otherwise, if no user currently logged in:
+  } else {
+
+    console.log('User successfully logged OUT from Firebase!');
+
+    // HERE: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
+var profilePhoto;
+
+  }
+});
