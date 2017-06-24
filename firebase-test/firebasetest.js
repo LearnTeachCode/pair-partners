@@ -85,9 +85,6 @@ firebase.auth().onAuthStateChanged(function(user){
   document.getElementById("userinfo").textContent = 'Not currently logged in.';
 
 
-
-    // HERE: Update the paragraph with ID of "userinfo" to display the message "Not currently logged in."
-
   }
 });
 
